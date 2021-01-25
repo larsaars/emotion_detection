@@ -2,4 +2,4 @@
 emotion_names = ['angry', 'disgusted', 'fearful', 'happy', 'neutral', 'sad', 'surprised']
 
 # path to the dataset file
-dataset_path = '../../datasets/fer2013.csv'
+dataset_path = 'D:/MachineLearning/datasets/fer2013.csv'

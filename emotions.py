@@ -42,6 +42,7 @@ def plot_model_history(model_history):
     axs[1].set_xlabel('Epoch')
     axs[1].set_xticks(np.arange(1, len(model_history.history['loss']) + 1), len(model_history.history['loss']) / 10)
     axs[1].legend(['train', 'val'], loc='best')
+    # save the plot and also show
     fig.savefig('plot.png')
     plt.show()
 

@@ -1,4 +1,4 @@
 # Project exclude paths
 /venv/
-/imgs/
+/data/
 model.h5
