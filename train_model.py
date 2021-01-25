@@ -78,7 +78,7 @@ model = gv.build_model()
 
 # create a checkpoint to save the model after each epoch
 checkpoint = ModelCheckpoint('model.h5', monitor='loss', verbose=1,
-                             save_best_only=True, mode='auto', period=1, save_weights_only=True)
+                             save_best_only=True, mode='auto', save_freq=1, save_weights_only=True)
 
 # start training
 model.compile(loss='categorical_crossentropy', optimizer=Adam(lr=0.0001, decay=1e-6), metrics=['accuracy'])
