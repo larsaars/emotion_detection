@@ -3,7 +3,8 @@ from tensorflow.keras.layers import Dense, Dropout, Flatten
 from tensorflow.keras.layers import MaxPooling2D
 from tensorflow.keras.models import Sequential
 
-# dictionary which assigns each label an emotion (alphabetical order)
+# each label gets an emotion assigned (alphabetical order because image data generator reads
+# the directories alphabetically)
 emotion_names = ['angry', 'disgusted', 'fearful', 'happy', 'neutral', 'sad', 'surprised']
 
 # path to the dataset file
