@@ -9,6 +9,8 @@ import numpy as np
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
+from keras.callbacks import ModelCheckpoint
+
 import global_variables as gv
 
 # set tensorflow log level
@@ -74,6 +76,10 @@ validation_generator = val_datagen.flow_from_directory(
 # create the model
 model = gv.build_model()
 
+# create a checkpoint to save the model after each epoch
+checkpoint = ModelCheckpoint('model.h5', monitor='loss', verbose=1,
+                             save_best_only=True, mode='auto', period=1, save_weights_only=True)
+
 # start training
 model.compile(loss='categorical_crossentropy', optimizer=Adam(lr=0.0001, decay=1e-6), metrics=['accuracy'])
 # fit
@@ -82,7 +88,8 @@ model_info = model.fit(
     steps_per_epoch=num_train // batch_size,
     epochs=num_epoch,
     validation_data=validation_generator,
-    validation_steps=num_val // batch_size)
+    validation_steps=num_val // batch_size,
+    callbacks=[checkpoint])
 # plot
 plot_model_history(model_info)
 # save the model
