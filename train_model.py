@@ -11,6 +11,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 import global_variables as gv
 
+# set tensorflow log level
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
@@ -60,14 +61,14 @@ train_generator = train_datagen.flow_from_directory(
     train_dir,
     target_size=(48, 48),
     batch_size=batch_size,
-    color_mode="grayscale",
+    color_mode='grayscale',
     class_mode='categorical')
 
 validation_generator = val_datagen.flow_from_directory(
     val_dir,
     target_size=(48, 48),
     batch_size=batch_size,
-    color_mode="grayscale",
+    color_mode='grayscale',
     class_mode='categorical')
 
 # create the model
@@ -75,11 +76,14 @@ model = gv.build_model()
 
 # start training
 model.compile(loss='categorical_crossentropy', optimizer=Adam(lr=0.0001, decay=1e-6), metrics=['accuracy'])
+# fit
 model_info = model.fit_generator(
     train_generator,
     steps_per_epoch=num_train // batch_size,
     epochs=num_epoch,
     validation_data=validation_generator,
     validation_steps=num_val // batch_size)
+# plot
 plot_model_history(model_info)
+# save the model
 model.save_weights('model.h5')

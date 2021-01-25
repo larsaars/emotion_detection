@@ -9,6 +9,7 @@ import numpy as np
 
 import global_variables as gv
 
+# set tensorflow log level
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # build the model
