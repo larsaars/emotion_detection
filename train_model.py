@@ -77,7 +77,7 @@ model = gv.build_model()
 # start training
 model.compile(loss='categorical_crossentropy', optimizer=Adam(lr=0.0001, decay=1e-6), metrics=['accuracy'])
 # fit
-model_info = model.fit_generator(
+model_info = model.fit(
     train_generator,
     steps_per_epoch=num_train // batch_size,
     epochs=num_epoch,
